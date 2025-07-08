@@ -125,15 +125,63 @@
 
 - **INNER JOIN**  
   - 両方のテーブルに共通するデータだけ表示。
-
+```sql
+SELECT 
+    muser.id AS user_id,
+    muser.name AS user_name,
+    muser.age,
+    muser.height,
+    company.id AS company_id,
+    company.name AS company_name
+FROM m_user AS muser
+INNER JOIN m_company AS company
+    ON muser.company = company.id;
+  ```
 - **LEFT JOIN**  
   - 左側のテーブルの全データを表示。
+
+```sql
+SELECT
+    m_user.*,
+    m_company.name AS company_name
+FROM
+    m_user
+LEFT JOIN
+    m_company ON m_user.id = m_company.id;
+```
+
 
 - **RIGHT JOIN**  
   - 右側のテーブルの全データを表示。
 
+```sql
+select 
+m_user.id,
+m_user.name,
+m_user.age,
+m_user.height, 
+m_user.company,
+m_company.id,
+m_company.name
+from m_user 
+right outer join m_company 
+on m_user.company = m_company.id;
+```
 - **CROSS JOIN**  
   - 両方のテーブルの全組み合わせを表示。
+
+```sql
+select 
+m_user.id,
+m_user.name,
+m_user.age,
+m_user.height, 
+m_user.company,
+m_company.id,
+m_company.name
+from m_user 
+cross join m_company ;
+```
 
 ---
 
