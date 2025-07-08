@@ -77,8 +77,54 @@
 
 - **サンプルコード**
 
+- **プロセス**
+```csharp
+using System;
+//外部アプリを使えるようにする
+using System.Diagnostics;
 
----
+class Sample
+{
+    static void Main()
+    {   //メモ帳を起動する
+        Process.Start("notepad.exe");
+        Console.WriteLine("メモ帳を起動しました");
+    }
+}
+```
+
+- **スレッド**
+```csharp
+using System;
+//同時に作業を進められるようにする
+using System.Threading;
+
+class Sample1
+{
+    static void Main()
+    {   //新しいスレッドを作成
+        Thread thread = new Thread(() =>
+        {   //forループ開始
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("スレッド：" + i);
+                //1秒間のインターバル
+                Thread.Sleep(1000);
+            }
+
+        });
+        //上のスレッドを開始
+        thread.Start();
+        //forループ開始
+        for (int i = 0; i < 10; i++)
+        {
+            Console.WriteLine("メイン：" + i);
+            //1秒間のインターバル
+            Thread.Sleep(1000);
+        }
+    }
+}
+```
 
 # (5) 0・空・null違いを説明してください
 
